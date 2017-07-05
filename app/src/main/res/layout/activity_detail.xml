@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFF"
+    android:fitsSystemWindows="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <include layout="@layout/layout_toolbar" />
+
+        <ImageView
+            android:id="@+id/de_image"
+            android:layout_width="match_parent"
+            android:layout_height="190dp"
+            android:layout_gravity="center"
+            android:adjustViewBounds="true"
+            android:background="@color/colorAccent"
+            android:scaleType="fitXY" />
+
+        <LinearLayout
+            android:id="@+id/category_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal">
+
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/de_name"
+            style="@style/TextViewStyle"
+            android:drawableLeft="@drawable/ic_restaurant"
+            android:drawablePadding="8dp"
+            android:text="Name" />
+
+        <TextView
+            android:id="@+id/de_address"
+            style="@style/TextViewStyle"
+            android:drawableLeft="@drawable/ic_place"
+            android:drawablePadding="8dp"
+            android:text="Address" />
+
+        <TextView
+            android:id="@+id/de_phone"
+            style="@style/TextViewStyle"
+            android:drawableLeft="@drawable/ic_contact_phone"
+            android:drawablePadding="8dp"
+            android:text="Phone" />
+
+        <TextView
+            android:id="@+id/de_web"
+            style="@style/TextViewStyle"
+            android:drawableLeft="@drawable/ic_public"
+            android:drawablePadding="8dp"
+            android:text="Web" />
+    </LinearLayout>
+
+</FrameLayout>

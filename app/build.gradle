@@ -1,0 +1,133 @@
+//Import plugin cause Dagger
+plugins {
+    id "me.tatarka.retrolambda" version "3.4.0"
+}
+
+apply plugin: 'com.android.application'
+
+//Apply Plugin cause Dagger
+apply plugin: 'me.tatarka.retrolambda'
+apply plugin: 'com.jakewharton.butterknife'
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+    defaultConfig {
+        applicationId "com.test.appmail"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary = true
+        multiDexEnabled true
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    buildTypes {
+        debug {
+            buildConfigField("String", "BASE_URL", "\"https://api.yelp.com\"")
+            buildConfigField("String", "BASE_WEB", "\"https://test.com\"")
+            buildConfigField("String", "API_KEY", "\"ABCXYZ123TEST\"")
+            buildConfigField("String", "YELP_CLIENT_ID", "\"3LgEfp1PDItdNZYOJb-5Fw\"")
+            buildConfigField("String", "YELP_CLIENT_SECRET", "\"6ZXvCtrCJyU5QL2vJwzaDKmzzxdQBE8GE7m0ub5KwTLeZGOCR3pSmAbDJoU33pjP\"")
+            buildConfigField("String", "YELP_GRANT_TYPE", "\"client_credentials\"")
+            buildConfigField("String", "GOOGLE_MAP_API_KEY", "\"AIzaSyCcnEYsHnN2kbntBKEzQCC6G0uEIVklve0\"")
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        stage {
+            buildConfigField("String", "BASE_URL", "\"https://api.yelp.com\"")
+            buildConfigField("String", "BASE_WEB", "\"https://test.com\"")
+            buildConfigField("String", "API_KEY", "\"ABCXYZ123TEST\"")
+            buildConfigField("String", "YELP_CLIENT_ID", "\"3LgEfp1PDItdNZYOJb-5Fw\"")
+            buildConfigField("String", "YELP_CLIENT_SECRET", "\"6ZXvCtrCJyU5QL2vJwzaDKmzzxdQBE8GE7m0ub5KwTLeZGOCR3pSmAbDJoU33pjP\"")
+            buildConfigField("String", "YELP_GRANT_TYPE", "\"client_credentials\"")
+            buildConfigField("String", "GOOGLE_MAP_API_KEY", "\"AIzaSyCcnEYsHnN2kbntBKEzQCC6G0uEIVklve0\"")
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        release {
+            buildConfigField("String", "BASE_URL", "\"https://api.yelp.com\"")
+            buildConfigField("String", "BASE_WEB", "\"https://test.com\"")
+            buildConfigField("String", "API_KEY", "\"ABCXYZ123TEST\"")
+            buildConfigField("String", "YELP_CLIENT_ID", "\"3LgEfp1PDItdNZYOJb-5Fw\"")
+            buildConfigField("String", "YELP_CLIENT_SECRET", "\"6ZXvCtrCJyU5QL2vJwzaDKmzzxdQBE8GE7m0ub5KwTLeZGOCR3pSmAbDJoU33pjP\"")
+            buildConfigField("String", "YELP_GRANT_TYPE", "\"client_credentials\"")
+            buildConfigField("String", "GOOGLE_MAP_API_KEY", "\"AIzaSyCcnEYsHnN2kbntBKEzQCC6G0uEIVklve0\"")
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    //Error:Conflict with dependency 'com.android.support:support-annotations' in project ':app'. Resolved versions for app (25.3.0) and test app (23.1.1) differ. See http://g.co/androidstudio/app-test-app-conflict for details.
+    configurations.all {
+        resolutionStrategy.force "com.android.support:support-annotations:$rootProject.supportLibraryVersion"
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+
+    // android support libraries
+    compile "com.android.support:appcompat-v7:$rootProject.supportLibraryVersion"
+    compile "com.android.support:recyclerview-v7:$rootProject.supportLibraryVersion"
+    compile "com.android.support:cardview-v7:$rootProject.supportLibraryVersion"
+    compile "com.android.support:design:$rootProject.supportLibraryVersion"
+    compile "com.android.support:support-vector-drawable:$rootProject.supportLibraryVersion"
+    compile "com.android.support:animated-vector-drawable:$rootProject.supportLibraryVersion"
+
+    // font
+    compile "uk.co.chrisjenx:calligraphy:$rootProject.calligraphyVersion"
+
+    //Reactive
+    compile "io.reactivex.rxjava2:rxjava:$rootProject.rxjava2Version"
+    compile "io.reactivex.rxjava2:rxandroid:$rootProject.rxandroidVersion"
+    compile "com.jakewharton.retrofit:retrofit2-rxjava2-adapter:$rootProject.rx2JavaAdapterVersion"
+
+    //Retrofit
+    compile "com.squareup.retrofit2:retrofit:$rootProject.retrofitVersion"
+    compile "com.squareup.retrofit2:converter-gson:$rootProject.convertJsonVersion"
+    compile "com.squareup.okhttp3:logging-interceptor:$rootProject.okhttp3LogginInterceptorVersion"
+
+    //Dagger
+    compile "com.google.dagger:dagger:$rootProject.dagger2Version"
+    annotationProcessor "com.google.dagger:dagger-compiler:$rootProject.dagger2Version"
+    provided "javax.annotation:jsr250-api:$rootProject.annoationJsr250Version"
+    compile "javax.inject:javax.inject:$rootProject.javaxInjectVersion"
+
+    // dependencies for local unit tests
+    testCompile "junit:junit:$rootProject.ext.junitVersion"
+    testCompile "org.mockito:mockito-core:$rootProject.mockitoVersion"
+    testAnnotationProcessor "com.google.dagger:dagger-compiler:$rootProject.dagger2Version"
+
+    // UI Testing
+    androidTestCompile "com.android.support.test.espresso:espresso-core:$rootProject.espressoVersion"
+    androidTestCompile "com.android.support.test.espresso:espresso-intents:$rootProject.espressoVersion"
+    androidTestCompile "org.mockito:mockito-core:$rootProject.mockitoVersion"
+    androidTestAnnotationProcessor "com.google.dagger:dagger-compiler:$rootProject.dagger2Version"
+
+    //ImageLoading
+    compile "com.github.bumptech.glide:glide:$rootProject.glideVersion"
+
+
+    // code generator for view
+    compile "com.jakewharton:butterknife:$rootProject.butterKnifeVersion"
+    annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.butterKnifeVersion"
+
+    compile "com.google.android.gms:play-services-maps:$rootProject.googleServiceVersion"
+    compile "com.android.support:appcompat-v7:$rootProject.supportLibraryVersion"
+
+    //Google Play Service
+    compile "com.google.android.gms:play-services:$rootProject.googleServiceVersion"
+
+    //Multidex
+    compile 'com.android.support:multidex:1.0.1'
+}

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    android:background="#ffffff"
+    android:orientation="vertical"
+    android:padding="8dp"
+
+    >
+
+    <ImageView
+        android:id="@+id/res_image"
+        style="@style/ImageViewStyle" />
+
+    <TextView
+        android:id="@+id/res_name"
+        style="@style/TextViewStyle"
+        android:drawableLeft="@drawable/ic_restaurant"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:text="Res Name"
+
+        />
+
+    <TextView
+        android:id="@+id/res_address"
+        style="@style/TextViewStyle"
+        android:drawableLeft="@drawable/ic_place"
+        android:text="Res Address" />
+
+    <RatingBar
+        android:id="@+id/res_rating"
+        style="@style/RatingStyle" />
+</LinearLayout>

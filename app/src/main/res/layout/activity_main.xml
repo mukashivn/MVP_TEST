@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_background"
+    android:orientation="vertical"
+    android:weightSum="8"
+    tools:context="com.core.ssvapp.ui.main.MainActivity"
+    tools:ignore="MissingPrefix">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="30dp"
+        android:layout_weight="5">
+
+        <ImageView
+            android:id="@+id/setting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:tint="@color/white"
+            android:visibility="invisible"
+            app:srcCompat="@drawable/ic_settings" />
+
+        <TextView
+            android:id="@+id/count_down_timer"
+            style="@style/TextViewMenuStyle"
+            fontPath="fonts/SourceSansPro-Regular.ttf"
+            android:layout_below="@+id/setting"
+            android:text="00:00:00"
+            android:textColor="@color/white"
+            android:textSize="60sp" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        android:background="@color/white"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="30dp"
+            android:layout_marginLeft="60dp"
+            android:layout_marginRight="60dp"
+            android:gravity="bottom">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true">
+
+                <ImageButton
+                    android:id="@+id/action_setting"
+                    style="@style/ImageButtonStyle"
+                    android:padding="10dp"
+                    android:tint="@color/gray"
+                    app:srcCompat="@drawable/ic_settings"
+                    />
+
+                <TextView
+                    style="@style/TextViewMenuStyle"
+                    fontPath="fonts/SourceSansPro-Regular.ttf"
+                    android:layout_below="@+id/action_setting"
+                    android:text="@string/setting"
+                    />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true">
+
+                <ImageButton
+                    android:id="@+id/action_record"
+                    style="@style/ImageButtonStyle"
+                    android:tint="@color/main_background"
+                    app:srcCompat="@drawable/ic_record_stype_2" />
+
+                <TextView
+                    android:id="@+id/record_state"
+                    style="@style/TextViewMenuStyle"
+                    fontPath="fonts/SourceSansPro-Regular.ttf"
+                    android:layout_below="@+id/action_record"
+                    android:text="@string/record_action" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true">
+
+                <ImageButton
+                    android:id="@+id/record_list"
+                    style="@style/ImageButtonStyle"
+                    android:padding="10dp"
+                    android:tint="@color/gray"
+                    app:srcCompat="@drawable/ic_menu" />
+
+                <TextView
+                    android:id="@+id/record_pause_list"
+                    style="@style/TextViewMenuStyle"
+                    fontPath="fonts/SourceSansPro-Regular.ttf"
+                    android:layout_below="@+id/record_list"
+                    android:text="@string/record_list" />
+            </RelativeLayout>
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>
